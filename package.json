@@ -1,0 +1,30 @@
+{
+  "name": "cloudflare-mail-worker",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "pub": "wrangler deploy",
+    "build": "node esbuild.config.js",
+    "lint": "eslint --fix src/index.ts src",
+    "test": "tsx src/test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250402.0",
+    "@types/html-to-text": "^9.0.4",
+    "@types/node": "^22.14.0",
+    "esbuild": "^0.25.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "wrangler": "^4.6.0"
+  },
+  "dependencies": {
+    "html-to-text": "^9.0.5",
+    "postal-mime": "^2.4.3"
+  }
+}
