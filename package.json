@@ -21,7 +21,7 @@
     "esbuild": "^0.25.2",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
-    "wrangler": "^4.6.0"
+    "wrangler": "^4.7.0"
   },
   "dependencies": {
     "html-to-text": "^9.0.5",
