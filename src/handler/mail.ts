@@ -18,17 +18,19 @@ export async function emailHandler(message: ForwardableEmailMessage, env: Enviro
         return;
     }
 
-    console.log(`Body: ${mail.text}`);
+    console.log(`Received from ${mail.from}: ${mail.text}`);
 
     const payload = {
-        from: mail.from,
-        to: mail.to,
+        from: mail.from.address,
+        to: mail.to![0].address,
         datetime: mail.date || new Date().toISOString(),
         subject: mail.subject,
         message: encodeText(mail.text!)
     };
 
-    console.log(`Payload POST ${env.FORWARD_URL}: ${payload}`);
+    const strPayload = JSON.stringify(payload);
+
+    console.log(`Payload POST ${env.FORWARD_URL}: ${strPayload}`);
 
     const response = await fetch(env.FORWARD_URL, {
         method: "POST",
@@ -36,7 +38,7 @@ export async function emailHandler(message: ForwardableEmailMessage, env: Enviro
           "Content-Type": "application/json",
           "X-AUTHORIZATION-TOKEN": env.AUTH_TOKEN
         },
-        body: JSON.stringify(payload)
+        body: strPayload
       });
 
       const responseData = await response.json();
